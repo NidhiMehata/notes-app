@@ -54,6 +54,6 @@ jobs:
       - name: Run tests
         working-directory: notes-backend
         env:
-          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/notes
+          DATABASE_URL: postgresql+psycopg://postgres:postgres@localhost:5432/notes
           JWT_SECRET_KEY: this-is-a-long-test-secret-key-for-ci-2026
         run: python -m pytest
