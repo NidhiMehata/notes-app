@@ -1,9 +1,6 @@
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-export async function apiFetch(
-  path: string,
-  options: RequestInit = {},
-) {
+export async function apiFetch(path: string, options: RequestInit = {}) {
   const token = localStorage.getItem("access_token");
 
   const headers = new Headers(options.headers);
@@ -18,6 +15,8 @@ export async function apiFetch(
   });
 
   if (response.status === 401) {
+    localStorage.removeItem("access_token");
+    window.location.href = "/login";
     throw new Error("Unauthorized");
   }
 

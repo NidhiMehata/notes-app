@@ -149,7 +149,7 @@ uvicorn main:app --reload
 The API will be available at:
 
 ```text id="2q0jla"
-http://localhost:8000
+http://localhost:10000
 ```
 
 ---
@@ -161,13 +161,13 @@ FastAPI automatically provides interactive API documentation.
 **Swagger UI**
 
 ```text id="k6y3pp"
-http://localhost:8000/docs
+http://localhost:10000/docs
 ```
 
 **OpenAPI schema**
 
 ```text id="7v6n5p"
-http://localhost:8000/openapi.json
+http://localhost:10000/openapi.json
 ```
 
 ---
@@ -248,8 +248,5 @@ Never commit `.env` or other files containing secrets.
 * Refresh token authentication
 * Note sharing and collaboration
 * Viewer / editor permissions
-* Automated tests
 * Better API error handling
-* CI/CD
-* Production deployment
 * Monitoring and logging

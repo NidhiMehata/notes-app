@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta, timezone
+
 import jwt
 from sqlalchemy import select
 
@@ -199,8 +201,42 @@ def test_register_user_empty_password(client):
         },
     )
 
-    # Current schema allows an empty password because password is simply `str`.
-    assert response.status_code == 201
+    assert response.status_code == 422
+
+    error = response.json()["detail"][0]
+
+    assert error["loc"] == ["body", "password"]
+
+def test_register_user_password_too_short(client):
+    response = client.post(
+        "/users/",
+        json={
+            "email": "short-password@example.com",
+            "password": "1234567",
+        },
+    )
+
+    assert response.status_code == 422
+
+    error = response.json()["detail"][0]
+
+    assert error["loc"] == ["body", "password"]
+
+
+def test_register_user_password_too_long(client):
+    response = client.post(
+        "/users/",
+        json={
+            "email": "long-password@example.com",
+            "password": "a" * 129,
+        },
+    )
+
+    assert response.status_code == 422
+
+    error = response.json()["detail"][0]
+
+    assert error["loc"] == ["body", "password"]
 
 
 def test_register_user_duplicate_email(client):
@@ -667,3 +703,21 @@ def test_login_user_token_rejects_modified_token(client):
         assert False, "Modified token should not be valid"
     except jwt.InvalidTokenError:
         pass
+
+def test_invalid_user_id_in_jwt_returns_401(client):
+    token = jwt.encode(
+        {
+            "sub": "not-an-integer",
+            "exp": datetime.now(timezone.utc) + timedelta(minutes=5),
+        },
+        settings.jwt_secret_key,
+        algorithm=settings.jwt_algorithm,
+    )
+
+    response = client.get(
+        "/notes",
+        headers={"Authorization": f"Bearer {token}"},
+    )
+
+    assert response.status_code == 401
+    assert response.json()["detail"] == "Could not validate credentials"

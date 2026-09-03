@@ -38,7 +38,7 @@ The frontend for the Notes App, built with **React, TypeScript, and Vite**.
                              ▼
                     ┌─────────────────┐
                     │  FastAPI API    │
-                    │ localhost:8000  │
+                    │ localhost:10000  │
                     └─────────────────┘
 ```
 
@@ -101,7 +101,7 @@ Create:
 with:
 
 ```env id="d5u6kx"
-VITE_API_BASE_URL=http://localhost:8000
+VITE_API_BASE_URL=http://localhost:10000
 ```
 
 ### 3. Start the development server
@@ -123,7 +123,7 @@ http://localhost:5173
 The frontend uses:
 
 ```env id="z3n6kf"
-VITE_API_BASE_URL=http://localhost:8000
+VITE_API_BASE_URL=http://localhost:10000
 ```
 
 to determine where API requests should be sent.
@@ -135,7 +135,7 @@ React
   │
   │ POST /auth/login
   ▼
-http://localhost:8000
+http://localhost:10000
   │
   ▼
 FastAPI
@@ -238,7 +238,7 @@ http://localhost:5173
 Example:
 
 ```env id="e4n8st"
-VITE_API_BASE_URL=http://localhost:8000
+VITE_API_BASE_URL=http://localhost:10000
 ```
 
 Because Vite embeds these values during the build, changing the API URL requires rebuilding the frontend.

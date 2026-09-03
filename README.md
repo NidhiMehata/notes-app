@@ -36,7 +36,7 @@ A full-stack notes application built with **React, TypeScript, FastAPI, PostgreS
                                │
                          API requests
                                │
-                           :8000
+                           :10000
                                ▼
                     ┌──────────────────────┐
                     │   FastAPI Backend    │
@@ -53,6 +53,47 @@ A full-stack notes application built with **React, TypeScript, FastAPI, PostgreS
 
 The entire stack can be started with a single Docker Compose command.
 
+---
+
+## 🌐 Production Architecture
+
+```text
+                        ┌─────────────────────┐
+                        │       Browser       │
+                        └──────────┬──────────┘
+                                   │
+                              HTTPS Request
+                                   │
+                                   ▼
+                    ┌──────────────────────────┐
+                    │     Render Static Site   │
+                    │  React + TypeScript +    │
+                    │          Vite            │
+                    └────────────┬─────────────┘
+                                 │
+                            HTTPS / REST API
+                                 │
+                                 ▼
+                    ┌──────────────────────────┐
+                    │     Render Web Service   │
+                    │    FastAPI + Docker      │
+                    │                          │
+                    │ JWT Authentication       │
+                    │ Notes API                │
+                    │ Business Logic           │
+                    └────────────┬─────────────┘
+                                 │
+                            SQL / PostgreSQL
+                                 │
+                                 ▼
+                    ┌──────────────────────────┐
+                    │    Render PostgreSQL     │
+                    │                          │
+                    │ Users                    │
+                    │ Notes                    │
+                    │ Note Collaborators       │
+                    └──────────────────────────┘
+```
 ---
 
 ## 🛠️ Built With
@@ -143,8 +184,8 @@ That's it. Docker Compose starts:
 | Service          | URL                        |
 | ---------------- | -------------------------- |
 | **Frontend**     | http://localhost:5173      |
-| **Backend API**  | http://localhost:8000      |
-| **Swagger Docs** | http://localhost:8000/docs |
+| **Backend API**  | http://localhost:10000      |
+| **Swagger Docs** | http://localhost:10000/docs |
 
 ---
 
@@ -258,21 +299,6 @@ Frontend `VITE_*` variables are client-side configuration and **must never conta
 | 🖥️ Backend   | [`notes-backend/README.md`](notes-backend/README.md)   |
 | 🎨 Frontend   | [`notes-frontend/README.md`](notes-frontend/README.md) |
 | 🐳 Full Stack | This README                                            |
-
----
-
-## 🔮 What's Next
-
-Some planned improvements:
-
-* Note sharing and collaboration
-* Viewer / editor permissions
-* Refresh token authentication
-* Automated tests
-* CI/CD
-* Cloud deployment
-* HTTPS
-* Monitoring and logging
 
 ---
 

@@ -1,6 +1,7 @@
 import logging
 
 from argon2 import PasswordHasher
+from argon2.exceptions import InvalidHashError, VerificationError
 from fastapi import HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -43,7 +44,7 @@ def verify_password(password: str, password_hash: str) -> bool:
     try:
         password_hasher.verify(password_hash, password)
         return True
-    except Exception:
+    except (InvalidHashError, VerificationError):
         return False
 
 

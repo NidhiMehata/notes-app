@@ -25,6 +25,14 @@ def get_current_user(
             detail="Could not validate credentials",
         )
 
+    try:
+        user_id = int(user_id)
+    except (TypeError, ValueError):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Could not validate credentials",
+        )
+
     user = db.scalar(select(User).where(User.id == int(user_id)))
 
     if user is None:
