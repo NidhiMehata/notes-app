@@ -7,11 +7,11 @@ from fastapi.responses import JSONResponse
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
+from config import settings
 from database.database import get_db
 from exceptions import NoteNotFoundError, UserNotFoundError
 from logging_config import setup_logging
 from routers import auth, notes, users
-from config import settings
 
 setup_logging()
 logger = logging.getLogger(__name__)

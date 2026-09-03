@@ -1,7 +1,7 @@
 import { apiFetch } from "./client";
 
 export async function getNotes() {
-  const response = await apiFetch("/notes/");
+  const response = await apiFetch("/notes");
 
   if (!response.ok) {
     throw new Error("Failed to fetch notes");
@@ -11,7 +11,7 @@ export async function getNotes() {
 }
 
 export async function createNote(title: string, content: string) {
-  const response = await apiFetch("/notes/", {
+  const response = await apiFetch("/notes", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
