@@ -207,6 +207,7 @@ def test_register_user_empty_password(client):
 
     assert error["loc"] == ["body", "password"]
 
+
 def test_register_user_password_too_short(client):
     response = client.post(
         "/users/",
@@ -703,6 +704,7 @@ def test_login_user_token_rejects_modified_token(client):
         assert False, "Modified token should not be valid"
     except jwt.InvalidTokenError:
         pass
+
 
 def test_invalid_user_id_in_jwt_returns_401(client):
     token = jwt.encode(
