@@ -32,9 +32,21 @@
   box-sizing: border-box;
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
   font-size: 16px;
+  background: #ffffff;
+  color: #111827;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #374151;
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .login-button {

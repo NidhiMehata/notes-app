@@ -52,6 +52,8 @@
 
 .editor-title {
   width: 100%;
+  padding: 0;
+  margin: 0 0 25px;
   border: none;
   outline: none;
   background: transparent;
@@ -59,7 +61,8 @@
   font-weight: 700;
   color: #111827;
   box-sizing: border-box;
-  margin-bottom: 25px;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .editor-title::placeholder {
@@ -117,4 +120,22 @@
   background: rgb(146, 139, 139);
   color: rgb(232, 224, 224);
   border: None;
+}
+
+@media (max-width: 700px) {
+  .editor-page {
+    padding: 24px 20px;
+  }
+
+  .editor-header {
+    margin-bottom: 32px;
+  }
+
+  .editor-title {
+    font-size: 32px;
+  }
+
+  .editor-content {
+    font-size: 16px;
+  }
 }
