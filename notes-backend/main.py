@@ -11,6 +11,7 @@ from database.database import get_db
 from exceptions import NoteNotFoundError, UserNotFoundError
 from logging_config import setup_logging
 from routers import auth, notes, users
+from config import settings
 
 setup_logging()
 logger = logging.getLogger(__name__)
@@ -55,7 +56,7 @@ def health(db: Session = Depends(get_db)):
 
 app = CORSMiddleware(
     app,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=settings.cors_origins.split(","),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
