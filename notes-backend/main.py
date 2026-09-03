@@ -48,7 +48,7 @@ async def global_exception_handler(
     )
 
 
-@app.get("/")
+@app.get("/healthz")
 def health(db: Session = Depends(get_db)):
     db.execute(text("SELECT 1"))
     return {"status": "ok", "message": "Notes API is running"}
