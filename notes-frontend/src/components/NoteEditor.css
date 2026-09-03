@@ -1,0 +1,120 @@
+.editor-page {
+  min-height: 100vh;
+  background: #f7f7f5;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.editor-container {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.editor-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.back-button,
+.cancel-button,
+.save-button {
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.back-button,
+.cancel-button {
+  border: 1px solid #e5e7eb;
+  background: white;
+  color: #374151;
+}
+
+.back-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.save-button {
+  border: none;
+  background: #1f2937;
+  color: white;
+}
+
+.editor-title {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 36px;
+  font-weight: 700;
+  color: #111827;
+  box-sizing: border-box;
+  margin-bottom: 25px;
+}
+
+.editor-title::placeholder {
+  color: #9ca3af;
+}
+
+.editor-content {
+  width: 100%;
+  min-height: 500px;
+  border: none;
+  outline: none;
+  resize: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #374151;
+  box-sizing: border-box;
+}
+
+.editor-content::placeholder {
+  color: #9ca3af;
+}
+
+.discard-button {
+  padding: 10px;
+  border: none;
+  background: rgb(246, 173, 173);
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.delete-button {
+  padding: 10px 16px;
+  border: 1px solid #dc2626;
+  border-radius: 8px;
+  background: rgb(246, 173, 173);
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.delete-button:hover {
+  background: #fef2f2;
+}
+
+.delete-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: rgb(146, 139, 139);
+  color: rgb(232, 224, 224);
+  border: None;
+}
