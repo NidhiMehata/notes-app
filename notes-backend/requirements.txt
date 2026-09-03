@@ -9,3 +9,5 @@ PyJWT
 python-multipart
 email-validator
 pydantic-settings
+pytest
+httpx2

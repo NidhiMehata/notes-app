@@ -8,7 +8,12 @@ from config import settings
 logger = logging.getLogger(__name__)
 
 
-engine = create_engine(settings.database_url)
+def create_db_engine(database_url: str):
+    return create_engine(database_url)
+
+
+engine = create_db_engine(settings.database_url)
+
 
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
