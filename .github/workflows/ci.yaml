@@ -41,7 +41,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pytest
+          pip install -r requirements-dev.txt
 
       - name: Check linting
         working-directory: notes-backend
@@ -50,7 +50,7 @@ jobs:
       - name: Check formatting
         working-directory: notes-backend
         run: ruff format --check .
-        
+
       - name: Run tests
         working-directory: notes-backend
         env:
